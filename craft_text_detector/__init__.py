@@ -137,6 +137,7 @@ class Craft:
             low_text=self.low_text,
             cuda=self.cuda,
             long_size=self.long_size,
+            poly=self.crop_type == "poly",
         )
 
         # arange regions
