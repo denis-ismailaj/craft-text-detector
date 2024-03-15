@@ -5,9 +5,12 @@ MIT License
 
 import cv2
 import numpy as np
+import PIL
 
 
 def read_image(image):
+    img = None
+    
     if type(image) == str:
         img = cv2.imread(image)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -24,7 +27,8 @@ def read_image(image):
             img = image
         elif len(image.shape) == 3 and image.shape[2] == 4:  # RGBAscale
             img = image[:, :, :3]
-
+    elif isinstance(image, PIL.Image.Image):
+        img = np.array(image)
     return img
 
 
